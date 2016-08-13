@@ -9,7 +9,6 @@ list.add("c");
 %>
 <html>
     <head>
-        <meta charset="UTF-8"/>
         <title>JSP Trial</title>
     </head>
     <body>
