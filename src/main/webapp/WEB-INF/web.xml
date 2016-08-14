@@ -18,6 +18,7 @@
         <url-pattern>/helloworld</url-pattern>
     </servlet-mapping-->
 
+
     <!-- JSP ファイルの URL マッピング -->
     <servlet>
         <servlet-name>JSPTrial</servlet-name>
@@ -26,6 +27,15 @@
     <servlet-mapping>
         <servlet-name>JSPTrial</servlet-name>
         <url-pattern>/jsp/trial</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MVCTrialView</servlet-name>
+        <jsp-file>/mvc_trial/view.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MVCTrialView</servlet-name>
+        <url-pattern>/mvc_trial/view</url-pattern>
     </servlet-mapping>
 
 </web-app>
