@@ -1,6 +1,7 @@
 package jetty.sample.apps.mvc_trial;
 
 import java.io.*;
+import java.net.URLEncoder;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,13 +15,14 @@ import javax.servlet.ServletException;
  * Created by kawabatahiroto on 2016/08/14.
  */
 @WebServlet(urlPatterns = "/mvc_trial/controller")
-public class Controller extends HttpServlet {
+public class SampleController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException{
         String forwardOrRedirect = request.getParameter("forwardOrRedirect");
+        String text = request.getParameter("text");
         try {
-            String modelRes = "modelResponse";
+            String modelRes = SampleModel.process(text);
             switch (forwardOrRedirect) {
                 case "forward":
                     // view ページへフォワード
@@ -30,7 +32,8 @@ public class Controller extends HttpServlet {
                     break;
                 case "redirect":
                     // view ページへリダイレクト
-                    response.sendRedirect("/mvc_trial/view/redirect?attr=" + modelRes);
+                    String url = "/mvc_trial/view/redirect?attr=" + URLEncoder.encode(modelRes, "UTF-8");
+                    response.sendRedirect(url);
                     break;
             }
         } catch (NullPointerException e) {
