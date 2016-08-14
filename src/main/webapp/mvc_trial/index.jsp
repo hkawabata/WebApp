@@ -4,6 +4,9 @@
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     </head>
     <body>
+
+    <h1>フォワード・リダイレクト</h1>
+
     <%
     String notSelected = request.getParameter("notSelected");
     if(notSelected != null) {
@@ -13,14 +16,14 @@
     }
     %>
 
-    <h3>GET によるフォワード・リダイレクト</h3>
+    <h2>GET によるフォワード・リダイレクト</h2>
     <form action="/mvc_trial/controller" method="get">
         <input type="radio" name="forwardOrRedirect" value="forward">forward
         <input type="radio" name="forwardOrRedirect" value="redirect">redirect
         <input type="submit">
     </form>
 
-    <h3>POST によるフォワード・リダイレクト</h3>
+    <h2>POST によるフォワード・リダイレクト</h2>
     <form action="/mvc_trial/controller" method="post">
         <input type="radio" name="forwardOrRedirect" value="forward">forward
         <input type="radio" name="forwardOrRedirect" value="redirect">redirect
