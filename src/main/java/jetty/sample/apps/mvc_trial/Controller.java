@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
 
+/**
+ * MVC のコントローラに相当するクラス
+ *
+ * Created by kawabatahiroto on 2016/08/14.
+ */
 @WebServlet(urlPatterns = "/mvc_trial/controller")
 public class Controller extends HttpServlet {
 
