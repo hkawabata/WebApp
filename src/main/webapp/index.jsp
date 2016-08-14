@@ -24,14 +24,22 @@ list.add("c");
         <p>繰り返し文<%= list.get(i) %></p>
         <% } %>
 
-        <form action="/hello/world" method="get">
-            Hello World のページへ：
+        <form action="/request/response" method="get">
+            <u><b>GET メソッド</b></u><br>
+            <ul>
+                <li>gender: <input type="radio" name="gender" value="male">male<input type="radio" name="gender" value="female">female</li>
+                <li>ID: <input type="text" name="id"></li>
+                <li>pass:<input type="text" name="pass"></li>
+            </ul>
             <input type="submit" value="ページ遷移">
         </form>
         <form action="/request/response" method="post">
-            Request/Response のページへ：<br>
-            ID: <input type="text" name="id">
-            pass:<input type="text" name="pass">
+            <u><b>POST メソッド</b></u><br>
+            <ul>
+                <li>gender: <input type="radio" name="gender" value="male">male<input type="radio" name="gender" value="female">female</li>
+                <li>ID: <input type="text" name="id"></li>
+                <li>pass:<input type="text" name="pass"></li>
+            </ul>
             <input type="submit" value="ページ遷移">
         </form>
     </body>

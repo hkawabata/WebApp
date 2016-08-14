@@ -17,13 +17,13 @@ public class RequestResponseApp extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
             String pass = request.getParameter("pass");
-            String resString = String.format("your ID is %d, your password is %s", id, pass);
-            out.println(String.format("{\"id\": %d, \"pass\": \"%s\", \"resString\": \"%s\"}", id, pass, resString));
+            String gender = request.getParameter("gender");
+            out.println(String.format("{\"gender\": \"%s\", \"id\": %d, \"pass\": \"%s\"}", gender, id, pass));
         } catch(Exception e) {
             //e.printStackTrace();
             String cls = e.getClass().getName();
             String msg = e.getLocalizedMessage();
-            out.println(String.format("{'error': '%s: %s'}", cls, msg));
+            out.println(String.format("{'error': '[%s] %s'}", cls, msg));
         }
     }
 
@@ -34,7 +34,8 @@ public class RequestResponseApp extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
             String pass = request.getParameter("pass");
-            String resString = String.format("your ID is %d, your password is %s", id, pass);
+            String gender = request.getParameter("gender");
+            String resString = String.format("Your gender is %s, your ID is %d, and your password is %s", gender, id, pass);
             out.println("<html><body>" + resString + "</body></html>");
         } catch(Exception e) {
             //e.printStackTrace();
