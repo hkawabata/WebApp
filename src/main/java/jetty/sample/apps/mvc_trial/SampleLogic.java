@@ -6,7 +6,7 @@ package jetty.sample.apps.mvc_trial;
  * Created by kawabatahiroto on 2016/08/14.
  */
 public class SampleLogic {
-    public static String process(String s) {
+    public static String execute(String s) {
         return "***" + s + "***";
     }
 }
