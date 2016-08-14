@@ -13,7 +13,28 @@ public class Controller extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException{
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/mvc_trial/view");
-        dispatcher.forward(request, response);
+        String forwardOrRedirect = request.getParameter("forwardOrRedirect");
+        try {
+            switch (forwardOrRedirect) {
+                case "forward":
+                    // view ページへフォワード
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/mvc_trial/view");
+                    dispatcher.forward(request, response);
+                    break;
+                case "redirect":
+                    // view ページへリダイレクト
+                    response.sendRedirect("/mvc_trial/view");
+                    break;
+            }
+        } catch (NullPointerException e) {
+            // forwardOrRedirect が指定されていないため元のページへフォワード
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/mvc_trial?notSelected=true");
+            dispatcher.forward(request, response);
+        }
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException{
+        doGet(request, response);
     }
 }
