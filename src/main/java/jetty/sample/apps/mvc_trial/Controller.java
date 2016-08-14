@@ -20,15 +20,17 @@ public class Controller extends HttpServlet {
             throws IOException, ServletException{
         String forwardOrRedirect = request.getParameter("forwardOrRedirect");
         try {
+            String modelRes = "modelResponse";
             switch (forwardOrRedirect) {
                 case "forward":
                     // view ページへフォワード
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/mvc_trial/view");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/mvc_trial/view/forward");
+                    request.setAttribute("attr", modelRes);
                     dispatcher.forward(request, response);
                     break;
                 case "redirect":
                     // view ページへリダイレクト
-                    response.sendRedirect("/mvc_trial/view");
+                    response.sendRedirect("/mvc_trial/view/redirect?attr=" + modelRes);
                     break;
             }
         } catch (NullPointerException e) {

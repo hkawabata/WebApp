@@ -30,12 +30,20 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>MVCTrialView</servlet-name>
-        <jsp-file>/mvc_trial/view.jsp</jsp-file>
+        <servlet-name>MVCTrialViewForward</servlet-name>
+        <jsp-file>/mvc_trial/view_forward.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>MVCTrialView</servlet-name>
-        <url-pattern>/mvc_trial/view</url-pattern>
+        <servlet-name>MVCTrialViewForward</servlet-name>
+        <url-pattern>/mvc_trial/view/forward</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>MVCTrialViewRedirect</servlet-name>
+        <jsp-file>/mvc_trial/view_redirect.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MVCTrialViewRedirect</servlet-name>
+        <url-pattern>/mvc_trial/view/redirect</url-pattern>
     </servlet-mapping>
 
 </web-app>
