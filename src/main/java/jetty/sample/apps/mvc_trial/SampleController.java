@@ -22,7 +22,7 @@ public class SampleController extends HttpServlet {
         String forwardOrRedirect = request.getParameter("forwardOrRedirect");
         String text = request.getParameter("text");
         try {
-            String modelRes = SampleModel.process(text);
+            String modelRes = SampleLogic.process(text);
             switch (forwardOrRedirect) {
                 case "forward":
                     // view ページへフォワード
