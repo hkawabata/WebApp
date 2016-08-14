@@ -22,17 +22,19 @@ public class SampleController extends HttpServlet {
         String forwardOrRedirect = request.getParameter("forwardOrRedirect");
         String text = request.getParameter("text");
         try {
-            String modelRes = SampleLogic.execute(text);
+            SampleBean bean = new SampleBean();
+            bean.setBeforeString(text);
+            SampleLogic.execute(bean);
             switch (forwardOrRedirect) {
                 case "forward":
                     // view ページへフォワード
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/mvc_trial/view/forward");
-                    request.setAttribute("attr", modelRes);
+                    request.setAttribute("attr", bean.getAfterString());
                     dispatcher.forward(request, response);
                     break;
                 case "redirect":
                     // view ページへリダイレクト
-                    String url = "/mvc_trial/view/redirect?attr=" + URLEncoder.encode(modelRes, "UTF-8");
+                    String url = "/mvc_trial/view/redirect?attr=" + URLEncoder.encode(bean.getAfterString(), "UTF-8");
                     response.sendRedirect(url);
                     break;
             }
