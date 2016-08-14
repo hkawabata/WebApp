@@ -32,8 +32,8 @@ public class Controller extends HttpServlet {
                     break;
             }
         } catch (NullPointerException e) {
-            // forwardOrRedirect が指定されていないため元のページへフォワード
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/mvc_trial?notSelected=true");
+            // 必要なパラメータが指定されていないため元のページへフォワード
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/mvc_trial?badParameter=true");
             dispatcher.forward(request, response);
         }
     }

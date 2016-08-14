@@ -8,7 +8,7 @@
     <h1>フォワード・リダイレクト</h1>
 
     <%
-    String notSelected = request.getParameter("notSelected");
+    String notSelected = request.getParameter("badParameter");
     if(notSelected != null) {
     %>
     <font color="red">forward か redirect を選択してください！</font>
