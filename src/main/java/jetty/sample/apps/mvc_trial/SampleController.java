@@ -29,7 +29,7 @@ public class SampleController extends HttpServlet {
                 case "forward":
                     // view ページへフォワード
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/mvc_trial/view/forward");
-                    request.setAttribute("attr", bean.getAfterString());
+                    request.setAttribute("attr", bean);
                     dispatcher.forward(request, response);
                     break;
                 case "redirect":
