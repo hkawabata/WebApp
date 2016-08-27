@@ -1,10 +1,18 @@
 # README
 
 ```
-# JSP
-http://localhost:8080
+# Hello World
+/hello/world
 
-# Servlet
-http://localhost:8080/hello/world
-http://localhost:8080/request/response
+# JSP Trial
+/
+ |
+ +--> /request/response
+
+# mvc_trial
+/mvc_trial
+ |
+ +--> /mvc_trial/view/forward
+ |
+ +--> /mvc_trial/view/redirect
 ```
