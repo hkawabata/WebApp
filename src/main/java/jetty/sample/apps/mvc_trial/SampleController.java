@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
 
 /**
  * MVC のコントローラに相当するクラス
@@ -25,17 +26,26 @@ public class SampleController extends HttpServlet {
             SampleBean bean = new SampleBean();
             bean.setBeforeString(text);
             SampleLogic.execute(bean);
+            String urlPattern;
             switch (forwardOrRedirect) {
                 case "forward":
                     // view ページへフォワード
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/mvc_trial/view/forward");
+                    urlPattern = "/mvc_trial/view/forward";
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(urlPattern);
                     request.setAttribute("attr", bean);
                     dispatcher.forward(request, response);
                     break;
                 case "redirect":
                     // view ページへリダイレクト
-                    String url = "/mvc_trial/view/redirect?attr=" + URLEncoder.encode(bean.getAfterString(), "UTF-8");
-                    response.sendRedirect(url);
+                    urlPattern = "/mvc_trial/view/redirect?attr=" + URLEncoder.encode(bean.getAfterString(), "UTF-8");
+                    response.sendRedirect(urlPattern);
+                    break;
+                case "redirect_ss":
+                    // view ページへリダイレクト（セッションスコープに Bean を保存）
+                    HttpSession session = request.getSession();
+                    session.setAttribute("attr", bean);
+                    urlPattern = "/mvc_trial/view/redirect_ss";
+                    response.sendRedirect(urlPattern);
                     break;
             }
         } catch (NullPointerException e) {

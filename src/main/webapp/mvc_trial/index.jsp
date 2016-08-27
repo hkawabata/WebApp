@@ -21,6 +21,7 @@
         <input type="text" name="text"><br>
         <input type="radio" name="forwardOrRedirect" value="forward">forward
         <input type="radio" name="forwardOrRedirect" value="redirect">redirect
+        <input type="radio" name="forwardOrRedirect" value="redirect_ss">redirect_ss<br>
         <input type="submit">
     </form>
 
@@ -29,6 +30,7 @@
         <input type="text" name="text"><br>
         <input type="radio" name="forwardOrRedirect" value="forward">forward
         <input type="radio" name="forwardOrRedirect" value="redirect">redirect
+        <input type="radio" name="forwardOrRedirect" value="redirect_ss">redirect_ss<br>
         <input type="submit">
     </form>
 

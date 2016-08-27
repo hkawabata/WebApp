@@ -45,5 +45,13 @@
         <servlet-name>MVCTrialViewRedirect</servlet-name>
         <url-pattern>/mvc_trial/view/redirect</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>MVCTrialViewRedirectSS</servlet-name>
+        <jsp-file>/mvc_trial/view_redirect_ss.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MVCTrialViewRedirectSS</servlet-name>
+        <url-pattern>/mvc_trial/view/redirect_ss</url-pattern>
+    </servlet-mapping>
 
 </web-app>
