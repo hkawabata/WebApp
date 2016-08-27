@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
+import net.arnx.jsonic.JSON;
 
 @WebServlet(urlPatterns = "/request/response")
 public class RequestResponseApp extends HttpServlet {
@@ -23,7 +24,7 @@ public class RequestResponseApp extends HttpServlet {
             //e.printStackTrace();
             String cls = e.getClass().getName();
             String msg = e.getLocalizedMessage();
-            out.println(String.format("{'error': '[%s] %s'}", cls, msg));
+            out.println(String.format("{\"error\": \"[%s] %s\"}", cls, msg.replaceAll("\"", "\\\\\"")));
         }
     }
 
@@ -41,7 +42,7 @@ public class RequestResponseApp extends HttpServlet {
             //e.printStackTrace();
             String cls = e.getClass().getName();
             String msg = e.getLocalizedMessage();
-            out.println(String.format("<html><body>internal server error:<br/>%s<br/>%s</body></html>", cls, msg));
+            out.println(String.format("<html><body>internal server error:<br/>%s<br/>%s</body></html>", cls, msg.replaceAll("\"", "\\\\\"")));
         }
     }
 }
