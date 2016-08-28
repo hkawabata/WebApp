@@ -66,4 +66,14 @@
         <url-pattern>/mvc_trial/view/redirect_as</url-pattern>
     </servlet-mapping>
 
+    <!--  -->
+    <servlet>
+        <servlet-name>Keijiban</servlet-name>
+        <jsp-file>/keijiban/index.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Keijiban</servlet-name>
+        <url-pattern>/keijiban</url-pattern>
+    </servlet-mapping>
+
 </web-app>
