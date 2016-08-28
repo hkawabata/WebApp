@@ -29,6 +29,7 @@
         <url-pattern>/jsp/trial</url-pattern>
     </servlet-mapping>
 
+    <!-- フォワードによる遷移（リクエストスコープ利用） -->
     <servlet>
         <servlet-name>MVCTrialViewForward</servlet-name>
         <jsp-file>/mvc_trial/view_forward.jsp</jsp-file>
@@ -37,6 +38,7 @@
         <servlet-name>MVCTrialViewForward</servlet-name>
         <url-pattern>/mvc_trial/view/forward</url-pattern>
     </servlet-mapping>
+    <!-- リダイレクトによる遷移（リクエストパラメータ指定） -->
     <servlet>
         <servlet-name>MVCTrialViewRedirect</servlet-name>
         <jsp-file>/mvc_trial/view_redirect.jsp</jsp-file>
@@ -45,6 +47,7 @@
         <servlet-name>MVCTrialViewRedirect</servlet-name>
         <url-pattern>/mvc_trial/view/redirect</url-pattern>
     </servlet-mapping>
+    <!-- リダイレクトによる遷移（セッションスコープ利用） -->
     <servlet>
         <servlet-name>MVCTrialViewRedirectSS</servlet-name>
         <jsp-file>/mvc_trial/view_redirect_ss.jsp</jsp-file>
@@ -53,6 +56,7 @@
         <servlet-name>MVCTrialViewRedirectSS</servlet-name>
         <url-pattern>/mvc_trial/view/redirect_ss</url-pattern>
     </servlet-mapping>
+    <!-- リダイレクトによる遷移（アプリケーションスコープ利用） -->
     <servlet>
         <servlet-name>MVCTrialViewRedirectAS</servlet-name>
         <jsp-file>/mvc_trial/view_redirect_as.jsp</jsp-file>
