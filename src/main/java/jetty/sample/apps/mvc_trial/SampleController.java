@@ -3,6 +3,7 @@ package jetty.sample.apps.mvc_trial;
 import java.io.*;
 import java.net.URLEncoder;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,6 +46,13 @@ public class SampleController extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("attr", bean);
                     urlPattern = "/mvc_trial/view/redirect_ss";
+                    response.sendRedirect(urlPattern);
+                    break;
+                case "redirect_as":
+                    // view ページへリダイレクト（アプリケーションスコープに Bean を保存）
+                    ServletContext application = getServletContext();
+                    application.setAttribute("attr", bean);
+                    urlPattern = "/mvc_trial/view/redirect_as";
                     response.sendRedirect(urlPattern);
                     break;
             }
