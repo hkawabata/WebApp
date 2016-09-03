@@ -60,5 +60,8 @@ if (posts == null) {
     <%
     }
     %>
+
+    <%-- footer.jsp を呼び出し--%>
+    <jsp:include page="/keijiban/footer.jsp" />
   </body>
 </html>
