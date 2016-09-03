@@ -52,9 +52,9 @@ if (posts == null) {
     <%
     for (Post post: posts){
     %>
+    <hr size="2" color="gray" width="90%" align="left">
     <%= post.getDate() %>: <b><%= post.getUser() %></b><br>
     <%= post.getText() %><br>
-    <hr size="2" color="gray" width="90%" align="left">
     <%
     }
     %>
