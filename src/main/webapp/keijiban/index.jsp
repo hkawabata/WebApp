@@ -10,6 +10,7 @@ if (posts == null) {
   application.setAttribute("posts", posts);
 }
 %>
+<!DOCTYPE html>
 <html lang="ja">
   <head>
     <title>掲示板</title>
@@ -24,6 +25,7 @@ if (posts == null) {
     %>
     <font color="red">ユーザ名あるいはパスワードが間違っています</font>
     <%
+    session.removeAttribute("badParameter");
     }
     %>
 
