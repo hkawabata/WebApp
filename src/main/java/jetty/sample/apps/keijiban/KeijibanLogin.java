@@ -35,7 +35,8 @@ public class KeijibanLogin extends HttpServlet {
             String urlPattern = "/keijiban";
             response.sendRedirect(urlPattern);
         } else {
-            session.setAttribute("badParameter", "true");
+            session.setAttribute("loginError", "true");
+            session.setAttribute("loginErrMsg", "ユーザ名あるいはパスワードが間違っています");
             String urlPattern = "/keijiban";
             response.sendRedirect(urlPattern);
         }

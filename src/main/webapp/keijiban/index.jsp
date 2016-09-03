@@ -18,14 +18,13 @@ if (posts == null) {
   <body>
 
     <h1>けいじばーん！</h1>
-
     <%
-    String notSelected = (String) session.getAttribute("badParameter");
+    String notSelected = (String) session.getAttribute("loginError");
     if(notSelected != null) {
     %>
-    <font color="red">ユーザ名あるいはパスワードが間違っています</font>
+    <font color="red">${loginErrMsg}</font>
     <%
-    session.removeAttribute("badParameter");
+    session.removeAttribute("loginError");
     }
     %>
 
