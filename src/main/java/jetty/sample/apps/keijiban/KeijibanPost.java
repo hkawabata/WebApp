@@ -26,8 +26,8 @@ public class KeijibanPost extends HttpServlet {
         HttpSession session = request.getSession();
         String postText = request.getParameter("post");
         String user = ((UserInfo) session.getAttribute("userInfo")).getName();
-        Post post = new Post(user, postText);
         List<Post> posts = (List<Post>) application.getAttribute("posts");
+        Post post = new Post(posts.size(), user, postText);
         posts.add(0, post);
 
         String urlPattern = "/keijiban";
