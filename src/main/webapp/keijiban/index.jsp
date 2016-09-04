@@ -3,6 +3,8 @@
 <%@ page import="java.util.List,java.util.List" %>
 <%@ page import="jetty.sample.apps.keijiban.bean.UserInfo" %>
 <%@ page import="jetty.sample.apps.keijiban.bean.Post" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
 List<Post> posts = (List<Post>) application.getAttribute("posts");
 if (posts == null) {
@@ -48,15 +50,12 @@ if (posts == null) {
     </form>
 
     <h2>これまでの投稿</h2>
-    <%
-    for (Post post: posts){
-    %>
-    <hr size="2" color="gray" width="90%" align="left">
-    <%= post.getDate() %>: <b><%= post.getUser() %></b><br>
-    <%= post.getText() %><br>
-    <%
-    }
-    %>
+
+    <c:forEach var="post" items="${posts}">
+        <hr size="2" color="gray" width="90%" align="left">
+        <c:out value="${post.date}" /> <b><c:out value="${post.user}" /></b><br>
+        <c:out value="${post.text}" />
+    </c:forEach>
 
     <%
     }
