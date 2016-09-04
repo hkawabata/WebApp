@@ -1,5 +1,11 @@
 ## 2016/09/04 MySQL と連携
 
+```bash
+$ brew update
+$ brew install mysql
+$ mysql.server start
+```
+
 ```sql
 $ mysql -uroot
 mysql> create database keijiban;
