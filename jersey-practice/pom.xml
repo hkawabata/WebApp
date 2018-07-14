@@ -45,7 +45,7 @@
                 <version>${jetty.version}</version>
                 <configuration>
                     <httpConnector>
-                        <port>8989</port>
+                        <port>80</port>
                     </httpConnector>
                 </configuration>
             </plugin>
