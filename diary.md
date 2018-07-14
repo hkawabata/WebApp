@@ -34,3 +34,29 @@ mysql> select * from keijiban.tsubuyaki order by id;
 +------+------------------------------+--------+------------------------------------
 
 ```
+
+
+
+## 2018/07/14 Jersey の学習
+
+jersey-practice プロジェクトを作成。
+
+### Maven から jetty を動かす：
+
+```bash
+$ mvn jetty:run
+```
+
+これで`http://localhost:${port}`にアクセスすればサーバが動いている
+
+### standalone の Jetty サーバで動かす
+
+```
+$ mvn package
+$ scp target/${WAR_NAME}.war ${JETTY_SERVER}:path/to/webapps/
+```
+
+これでサーバ側の jetty を起動（`java -jar start.jar`）すれば動く。
+
+アクセス先は`mvn`で動かしたときと違って`http://localhost:${port}/${WAR_NAME}`なので注意。
+
