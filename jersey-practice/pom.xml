@@ -44,8 +44,9 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
+                    <!-- 1024番以下のポートで LISTEN するには root 権限が必要らしいのでポート変更 -->
                     <httpConnector>
-                        <port>80</port>
+                        <port>8080</port>
                     </httpConnector>
                 </configuration>
             </plugin>
