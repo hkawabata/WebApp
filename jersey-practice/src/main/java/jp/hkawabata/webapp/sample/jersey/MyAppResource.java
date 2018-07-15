@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/")
 public class MyAppResource {
     @Inject
-    IZooKeeperWatcher zkWatcher;
+    private IZooKeeperWatcher zkWatcher;
 
     @GET
     @Produces(MediaType.TEXT_HTML)
