@@ -15,19 +15,12 @@ public class ZooKeeperWatcher implements IZooKeeperWatcher {
     private String zkHost = "node001.hkawabata.jp";
     private String znode = "/zk_test";
 
-    public long createdTimeNano;
+    private long createdTimeNano;
 
     private ZooKeeper zk;
     private String zkData;
 
-    public ZooKeeper getZooKeeper() {
-        if (zk == null || !zk.getState().equals(ZooKeeper.States.CONNECTED)) {
-            throw new IllegalStateException("ZooKeeper is not connected.");
-        }
-        return zk;
-    }
-
-    public void connect(String host) throws Exception, InterruptedException {
+    private void connect(String host) throws Exception {
         zk = new ZooKeeper(host, 5000,
                 new Watcher() {
                     public void process(WatchedEvent watchedEvent) {
@@ -36,7 +29,7 @@ public class ZooKeeperWatcher implements IZooKeeperWatcher {
                             try {
                                 zkData = new String(zk.getData(znode, true, null));
                             } catch (Exception e) {
-                                e.printStackTrace();
+                                System.out.println(e.toString());;
                             }
                         }
                     }
@@ -44,6 +37,7 @@ public class ZooKeeperWatcher implements IZooKeeperWatcher {
         );
         // つながるまで待機とかした方が良い？？
     }
+
     public void close() throws InterruptedException {
         zk.close();
     }
@@ -54,7 +48,7 @@ public class ZooKeeperWatcher implements IZooKeeperWatcher {
             connect(zkHost);
             zkData = new String(zk.getData(znode, true, null));
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
     }
 
