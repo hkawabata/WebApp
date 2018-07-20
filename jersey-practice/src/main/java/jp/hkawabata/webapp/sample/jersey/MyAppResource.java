@@ -31,6 +31,13 @@ public class MyAppResource {
         return "{\"num\": 100}";
     }
 
+    /**
+     * ZooKeeper と接続してデータを取ってくる
+     * - アプリケーションサーバ起動時に一度だけ ZooKeeper からデータを取得
+     * - その後は ZooKeeper のデータが変更されたら即時再フェッチして値を更新
+     *
+     * @return
+     */
     @GET
     @Path("/zk")
     @Produces(MediaType.TEXT_PLAIN)
