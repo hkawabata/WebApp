@@ -36,6 +36,7 @@
         <finalName>${project.artifactId}-${project.version}</finalName>
         <plugins>
             <!-- web.xml がなくてもビルドを通すための設定 -->
+            <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -44,6 +45,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+            -->
             <!-- jetty server を Maven で動かす (mvn jetty:run) ための設定 (2/2) -->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
