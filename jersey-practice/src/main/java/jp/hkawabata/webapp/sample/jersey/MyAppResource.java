@@ -32,6 +32,31 @@ public class MyAppResource {
     }
 
     /**
+     * 同じ /acceptTypeTest というパスでアクセスされたとき、リクエストの Accept ヘッダの内容次第で挙動を切り替える
+     * 以下の3つを叩いたときに結果が変わる
+     *   - curl --dump-header - -H 'Accept:text/xml' http://localhost:8080/acceptTypeTest
+     *   - curl --dump-header - -H 'Accept:application/json' http://localhost:8080/acceptTypeTest
+     *   - curl --dump-header - -H 'Accept:plain/text' http://localhost:8080/acceptTypeTest
+     */
+    @GET
+    @Path("/acceptTypeTest")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String acceptTypeTestOnlyJSON() {
+        return "{\"result\": \"JSON が要求されたため JSON 形式で返却します。\"}";
+    }
+    @GET
+    @Path("/acceptTypeTest")
+    @Produces({MediaType.APPLICATION_XML, MediaType.TEXT_XML})
+    public String acceptTypeTestOnlyXML() {
+        return "<result>XML が要求されたため XML 形式で返却します</result>";
+    }
+    @GET
+    @Path("/acceptTypeTest")
+    public String acceptTypeTestAny() {
+        return "JSON/XML ともに Accept ヘッダに含まれなかったため、plain/text を返却します";
+    }
+
+    /**
      * ZooKeeper と接続してデータを取ってくる
      * - アプリケーションサーバ起動時に一度だけ ZooKeeper からデータを取得
      * - その後は ZooKeeper のデータが変更されたら即時再フェッチして値を更新
@@ -44,4 +69,6 @@ public class MyAppResource {
     public String zk() {
         return zkWatcher.s();
     }
+
+
 }
