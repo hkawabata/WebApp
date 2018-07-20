@@ -1,9 +1,7 @@
 package jp.hkawabata.webapp.sample.jersey;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("/")
@@ -52,8 +50,32 @@ public class MyAppResource {
     }
     @GET
     @Path("/acceptTypeTest")
-    public String acceptTypeTestAny() {
+    public String acceptTypeTestOthers() {
         return "JSON/XML ともに Accept ヘッダに含まれなかったため、plain/text を返却します";
+    }
+
+    /**
+     * リクエストパラメータ・パスパラメータを受け取って使用する
+     * 受け取り時にユーザ定義のオブジェクト (User) への変換も行う
+     */
+    @GET
+    @Path("/paramTest/{pathParam}")
+    public String paramTest(
+            @PathParam("pathParam") String pathParam,
+            @DefaultValue("false") @QueryParam("debug") boolean debug,
+            @DefaultValue("太郎") @QueryParam("user") User user
+    ){
+        String res = String.format("pathParam: %s, QueryParam: %s", pathParam, user.name);
+        if (debug) {
+            res += " (debug mode)";
+        }
+        return res;
+    }
+    public static class User {
+        String name;
+        public User(String user) {
+            this.name = user;
+        }
     }
 
     /**
@@ -69,6 +91,4 @@ public class MyAppResource {
     public String zk() {
         return zkWatcher.s();
     }
-
-
 }
