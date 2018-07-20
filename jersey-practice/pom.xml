@@ -44,7 +44,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-            <!-- jetty server を Maven で動かすための設定 (2/2) -->
+            <!-- jetty server を Maven で動かす (mvn jetty:run) ための設定 (2/2) -->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
