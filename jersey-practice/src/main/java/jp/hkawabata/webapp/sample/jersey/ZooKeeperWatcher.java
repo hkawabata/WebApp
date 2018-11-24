@@ -48,7 +48,7 @@ public class ZooKeeperWatcher implements IZooKeeperWatcher {
             connect(zkHost);
             zkData = new String(zk.getData(znode, true, null));
         } catch (Exception e) {
-            System.out.println(e.toString());
+            System.out.println("Error: connect to ZK");
         }
     }
 
