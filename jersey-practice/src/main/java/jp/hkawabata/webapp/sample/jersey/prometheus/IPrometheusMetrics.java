@@ -6,16 +6,22 @@ import io.prometheus.client.Gauge;
 import io.prometheus.client.Histogram;
 import io.prometheus.client.Summary;
 
-public interface IMetrics {
+public interface IPrometheusMetrics {
     CollectorRegistry registry = new CollectorRegistry();
 
-    Counter counter = Counter.build()
-            .name("requests_total").help("counter").register(registry);
+    Counter requestsTotal = Counter.build()
+            .name("requests_total").help("requestsTotal").register(registry);
 
-    Gauge gauge = Gauge.build()
+    Gauge requestsInProgress = Gauge.build()
             .name("inprogress_requests").help("Inprogress requests.").register(registry);
 
     Summary latencySummary = Summary.build()
+            .quantile(0.1, 0.01)
+            .quantile(0.3, 0.01)
+            .quantile(0.5, 0.01)
+            .quantile(0.7, 0.01)
+            .quantile(0.9, 0.01)
+            .maxAgeSeconds(60)
             .name("requests_latency_seconds_summary").help("Request latency in seconds (Summary).").register(registry);
 
     Histogram latencyHistogram = Histogram.build()
@@ -23,9 +29,9 @@ public interface IMetrics {
 
     String result();
 
-    void incCounter();
-    void incGauge();
-    void decGauge();
+    void incRequestsTotal();
+    void incRequestsInProgress();
+    void decRequestsInProgress();
     Summary.Timer startTimerForSummary();
     Histogram.Timer startTimerForHistogram();
 }

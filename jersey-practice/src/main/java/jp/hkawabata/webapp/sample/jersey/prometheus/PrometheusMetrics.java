@@ -6,7 +6,7 @@ import io.prometheus.client.exporter.common.TextFormat;
 
 import java.io.StringWriter;
 
-public class Metrics implements IMetrics {
+public class PrometheusMetrics implements IPrometheusMetrics {
     public String result() {
         StringWriter writer = new StringWriter();
         try {
@@ -17,14 +17,14 @@ public class Metrics implements IMetrics {
         return writer.toString();
     }
 
-    public void incCounter() {
-        counter.inc();
+    public void incRequestsTotal() {
+        requestsTotal.inc();
     }
-    public void incGauge() {
-        gauge.inc();
+    public void incRequestsInProgress() {
+        requestsInProgress.inc();
     }
-    public void decGauge() {
-        gauge.dec();
+    public void decRequestsInProgress() {
+        requestsInProgress.dec();
     }
     public Summary.Timer startTimerForSummary() {
         return latencySummary.startTimer();
